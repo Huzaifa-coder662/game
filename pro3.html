@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Grand Hotel & Resort | Luxury Stay, Booking & Support</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        gold: { 100:'#FAF4E1',200:'#F3E5B8',300:'#EBD48A',400:'#E2C25C',500:'#D4AF37',600:'#B89228',700:'#94721D',800:'#705414',900:'#4F390B' },
+        dark: { 800:'#121619',900:'#0B0D0F',950:'#050709' }
+      },
+      fontFamily: {
+        serif: ['"Playfair Display"','serif'],
+        sans: ['"Plus Jakarta Sans"','sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+  body { font-family:'Plus Jakarta Sans',sans-serif; background:#050709; color:#E2E8F0; overflow-x:hidden; }
+  .font-serif { font-family:'Playfair Display',serif; }
+  .glass-panel { background:rgba(18,22,25,.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(212,175,55,.18); }
+  .gold-gradient-text { background:linear-gradient(135deg,#F3E5B8 0%,#D4AF37 50%,#94721D 100%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; }
+  .gold-btn { background:linear-gradient(135deg,#E2C25C 0%,#D4AF37 50%,#B89228 100%); color:#050709; transition:all .3s cubic-bezier(.4,0,.2,1); }
+  .gold-btn:hover:not(:disabled) { box-shadow:0 0 25px rgba(212,175,55,.45); transform:translateY(-2px); }
+  .gold-btn:disabled { opacity:.45; cursor:not-allowed; }
+  .btn-ghost { border:1px solid rgba(212,175,55,.4); color:#E2C25C; transition:background .2s; }
+  .btn-ghost:hover { background:rgba(212,175,55,.1); }
+  .card-hover { transition:all .4s cubic-bezier(.16,1,.3,1); }
+  .card-hover:hover { transform:translateY(-6px); border-color:rgba(212,175,55,.45); box-shadow:0 10px 30px -10px rgba(212,175,55,.15); }
+  .field { width:100%; background:#0B0D0F; border:1px solid rgba(255,255,255,.1); border-radius:.75rem; padding:.7rem 1rem; font-size:.875rem; color:#fff; }
+  .field:focus { outline:none; border-color:#D4AF37; }
+  .label { display:block; font-size:.7rem; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:#D1D5DB; margin-bottom:.35rem; }
+  .nav-link { color:#D1D5DB; position:relative; padding:.25rem 0; transition:color .2s; }
+  .nav-link:hover, .nav-link.active { color:#E2C25C; }
+  .nav-indicator { display:none; position:absolute; bottom:0; left:0; width:100%; height:2px; border-radius:9999px; background:#D4AF37; }
+  .nav-link.active .nav-indicator { display:block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+  .tab-page { animation:fadeIn .5s ease both; }
+  .board-grid { background-image:linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px); background-size:calc(100% / 14) 100%; }
+  .bar { position:absolute; height:26px; border-radius:8px; padding:0 8px; font-size:11px; font-weight:600; display:flex; align-items:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; cursor:pointer; }
+  .bar-confirmed { background:rgba(59,130,246,.25); border:1px solid rgba(59,130,246,.6); color:#93c5fd; }
+  .bar-checkedin { background:rgba(245,158,11,.25); border:1px solid rgba(245,158,11,.6); color:#fcd34d; }
+  .stripes { background:repeating-linear-gradient(45deg, rgba(239,68,68,.12) 0 8px, transparent 8px 16px); }
+  .admin-tab { border:1px solid rgba(255,255,255,.1); color:#9CA3AF; }
+  .admin-tab.active { background:rgba(212,175,55,.15); color:#E2C25C; border-color:rgba(212,175,55,.5); }
+  details > summary { list-style:none; }
+  details > summary::-webkit-details-marker { display:none; }
+  details[open] .chev { transform:rotate(180deg); }
+  .chev { transition:transform .25s; }
+  .modal { position:fixed; inset:0; z-index:60; align-items:center; justify-content:center; padding:1rem; background:rgba(0,0,0,.85); backdrop-filter:blur(8px); }
+  ::-webkit-scrollbar { width:8px; height:8px; }
+  ::-webkit-scrollbar-track { background:#050709; }
+  ::-webkit-scrollbar-thumb { background:#27303a; border-radius:4px; }
+  ::-webkit-scrollbar-thumb:hover { background:#D4AF37; }
+</style>
+</head>
+
+<body class="antialiased selection:bg-gold-500 selection:text-dark-950">
+
+<!-- ================= HEADER ================= -->
+<header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-gold-500/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <a href="javascript:void(0)" onclick="switchTab('home')" class="flex items-center gap-3 group">
+      <div class="w-10 h-10 rounded-xl border border-gold-500/40 flex items-center justify-center bg-gold-500/10 group-hover:border-gold-500 transition-colors">
+        <i class="fa-solid fa-crown text-gold-500 text-lg"></i>
+      </div>
+      <div>
+        <span class="block font-serif text-lg tracking-widest font-bold text-white uppercase leading-tight">Royal Grand</span>
+        <span class="block text-[9px] tracking-[0.25em] text-gold-400 font-medium uppercase">Hotel & Resort</span>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8">
+      <button class="nav-link text-sm font-medium active" data-nav="home" onclick="switchTab('home')">Home<span class="nav-indicator"></span></button>
+      <button class="nav-link text-sm font-medium" data-nav="rooms" onclick="switchTab('rooms')">Rooms & Suites<span class="nav-indicator"></span></button>
+      <button class="nav-link text-sm font-medium" data-nav="about" onclick="switchTab('about')">About Us<span class="nav-indicator"></span></button>
+      <button class="nav-link text-sm font-medium" data-nav="services" onclick="switchTab('services')">Services<span class="nav-indicator"></span></button>
+      <button class="nav-link text-sm font-medium" data-nav="support" onclick="switchTab('support')">Support<span class="nav-indicator"></span></button>
+    </nav>
+
+    <div class="hidden sm:flex items-center gap-3">
+      <button onclick="requestAdmin()" class="px-4 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider text-gray-300 border border-gold-500/30 hover:bg-gold-500/10 hover:text-gold-400 transition-all flex items-center gap-2">
+        <i class="fa-solid fa-user-gear text-gold-500"></i><span>Admin</span>
+      </button>
+      <button onclick="openBookingModal()" class="gold-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-lg">
+        <span>Book Now</span><i class="fa-solid fa-arrow-right text-xs"></i>
+      </button>
+    </div>
+
+    <button onclick="toggleMobileMenu()" class="lg:hidden text-gray-300 hover:text-gold-400 text-2xl p-2 rounded-lg">
+      <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden glass-panel border-t border-gold-500/20 px-4 pt-4 pb-6 space-y-2">
+    <button onclick="switchTab('home')" class="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-300">Home</button>
+    <button onclick="switchTab('rooms')" class="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-300">Rooms & Suites</button>
+    <button onclick="switchTab('about')" class="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-300">About Us</button>
+    <button onclick="switchTab('services')" class="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-300">Services</button>
+    <button onclick="switchTab('support')" class="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gray-300">Support</button>
+    <button onclick="requestAdmin()" class="block w-full text-left px-4 py-3 rounded-xl text-base font-medium text-gold-400 border border-gold-500/30 bg-gold-500/5">
+      <i class="fa-solid fa-user-gear mr-2"></i>Admin Portal
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE BOTTOM BAR -->
+<div class="fixed bottom-0 left-0 right-0 z-40 bg-dark-950/95 backdrop-blur-lg border-t border-gold-500/30 p-3 sm:hidden flex items-center gap-2">
+  <button onclick="switchTab('rooms')" class="flex-1 py-2.5 rounded-xl border border-gold-500/30 text-gold-400 text-xs font-semibold flex items-center justify-center gap-1.5 bg-gold-500/10"><i class="fa-solid fa-bed"></i><span>Rooms</span></button>
+  <button onclick="openBookingModal()" class="flex-[2] gold-btn py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg"><i class="fa-solid fa-calendar-check"></i><span>Book Now</span></button>
+  <button onclick="switchTab('support')" class="flex-1 py-2.5 rounded-xl border border-white/10 text-gray-300 text-xs font-semibold flex items-center justify-center gap-1.5 bg-white/5"><i class="fa-solid fa-headset"></i><span>Help</span></button>
+</div>
+
+<main class="pt-20 pb-24 sm:pb-0">
+
+<!-- ================= HOME ================= -->
+<div id="tab-home" class="tab-page">
+  <section class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-20 px-4 sm:px-6 lg:px-8">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=85" alt="Royal Grand Hotel Exterior" class="w-full h-full object-cover object-center scale-105" onerror="this.src='https://placehold.co/1920x1080/121619/D4AF37?text=Royal+Grand+Resort'">
+      <div class="absolute inset-0 bg-gradient-to-r from-dark-950/95 via-dark-950/80 to-dark-950/85"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-5xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs tracking-widest font-semibold uppercase">
+        <i class="fa-solid fa-star text-[10px]"></i><span>Welcome to Royal Grand</span><i class="fa-solid fa-star text-[10px]"></i>
+      </div>
+      <h1 class="font-serif text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-medium tracking-tight text-white leading-tight">
+        Luxury Stay <br><span class="italic font-normal gold-gradient-text">Beyond Expectation</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-light px-2">
+        Live room availability, instant booking and 24/7 guest support at Islamabad's most exclusive luxury hotel.
+      </p>
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4 px-4">
+        <button onclick="openBookingModal()" class="gold-btn px-8 py-4 rounded-xl font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center gap-3 shadow-xl w-full sm:w-auto justify-center min-h-[48px]">
+          <span>Book Your Stay</span><i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+        <button onclick="switchTab('rooms')" class="btn-ghost px-8 py-4 rounded-xl font-bold text-xs sm:text-sm tracking-wider uppercase w-full sm:w-auto min-h-[48px]">View Available Rooms</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 sm:-mt-16 relative z-20 mb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-panel p-5 sm:p-6 rounded-2xl flex items-center gap-4 hover:border-gold-500/50 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl flex-shrink-0"><i class="fa-solid fa-bed"></i></div>
+        <div><h3 class="font-serif font-bold text-white text-base">Luxury Rooms</h3><p class="text-xs text-gray-400">Comfortable & Elegant</p></div>
+      </div>
+      <div class="glass-panel p-5 sm:p-6 rounded-2xl flex items-center gap-4 hover:border-gold-500/50 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl flex-shrink-0"><i class="fa-solid fa-utensils"></i></div>
+        <div><h3 class="font-serif font-bold text-white text-base">Fine Dining</h3><p class="text-xs text-gray-400">Local & International</p></div>
+      </div>
+      <div class="glass-panel p-5 sm:p-6 rounded-2xl flex items-center gap-4 hover:border-gold-500/50 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl flex-shrink-0"><i class="fa-solid fa-spa"></i></div>
+        <div><h3 class="font-serif font-bold text-white text-base">Spa & Wellness</h3><p class="text-xs text-gray-400">Relax & Rejuvenate</p></div>
+      </div>
+      <div class="glass-panel p-5 sm:p-6 rounded-2xl flex items-center gap-4 hover:border-gold-500/50 transition-colors">
+        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl flex-shrink-0"><i class="fa-solid fa-location-dot"></i></div>
+        <div><h3 class="font-serif font-bold text-white text-base">Prime Location</h3><p class="text-xs text-gray-400">City Center Heart</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-dark-900/90 border-y border-gold-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-gold-500 uppercase block mb-2">Tonight's Availability</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-medium text-white">Designed for Your <br><span class="italic font-normal gold-gradient-text">Ultimate Comfort</span></h2>
+        </div>
+        <button onclick="switchTab('rooms')" class="self-start md:self-auto px-4 py-2 bg-white/5 border border-gold-500/30 rounded-xl text-xs font-bold text-gold-400 hover:bg-gold-500/10">View All Rooms &rarr;</button>
+      </div>
+      <div id="homeRooms" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-4 grid sm:grid-cols-3 gap-4 text-center">
+      <div class="glass-panel rounded-2xl p-6"><i class="fa-solid fa-headset text-gold-400 text-2xl mb-3"></i><h3 class="font-serif text-white font-bold">Guest Support</h3><p class="text-xs text-gray-400 mt-1">Message our team or chat with our concierge.</p><button onclick="switchTab('support')" class="mt-4 text-xs font-bold text-gold-400 hover:text-gold-300">Get Help &rarr;</button></div>
+      <div class="glass-panel rounded-2xl p-6"><i class="fa-solid fa-magnifying-glass text-gold-400 text-2xl mb-3"></i><h3 class="font-serif text-white font-bold">Booking Lookup</h3><p class="text-xs text-gray-400 mt-1">Check your reservation with your ID and email.</p><button onclick="switchTab('support')" class="mt-4 text-xs font-bold text-gold-400 hover:text-gold-300">Find Booking &rarr;</button></div>
+      <div class="glass-panel rounded-2xl p-6"><i class="fa-solid fa-phone text-gold-400 text-2xl mb-3"></i><h3 class="font-serif text-white font-bold">Call Us</h3><p class="text-xs text-gray-400 mt-1">+92 34012345</p><a href="tel:+923485549277" class="mt-4 inline-block text-xs font-bold text-gold-400 hover:text-gold-300">Call Now &rarr;</a></div>
+    </div>
+  </section>
+
+  <section class="relative py-24 overflow-hidden border-y border-gold-500/20">
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=2000&q=80" alt="Sunset Pool" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/1920x800/0B0D0F/D4AF37?text=Infinity+Pool'">
+      <div class="absolute inset-0 bg-gradient-to-r from-dark-950/95 via-dark-950/80 to-dark-950/95"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-4 space-y-6">
+      <span class="text-xs font-bold tracking-[0.3em] text-gold-400 uppercase block">A Perfect Place To Relax</span>
+      <h2 class="font-serif text-3xl sm:text-5xl md:text-6xl text-white font-medium">Your Dream Getaway Awaits</h2>
+      <button onclick="openBookingModal()" class="gold-btn px-8 py-4 rounded-xl font-bold text-xs uppercase tracking-widest inline-flex items-center gap-3">Book Your Stay <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ROOMS ================= -->
+<div id="tab-rooms" class="tab-page hidden">
+  <section class="py-16 bg-dark-900 border-b border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold tracking-widest text-gold-500 uppercase block mb-2">Real-Time Inventory</span>
+      <h1 class="font-serif text-3xl sm:text-6xl font-medium text-white mb-3">Rooms & Availability</h1>
+      <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">Choose your dates to see live availability. Fully booked rooms are locked automatically.</p>
+    </div>
+  </section>
+  <section class="py-12 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <form onsubmit="searchRooms(event)" class="glass-panel rounded-2xl p-4 sm:p-5 mb-8 flex flex-col lg:flex-row lg:items-end gap-4">
+        <div class="flex-1 grid grid-cols-2 gap-4">
+          <div><label class="label">Check-In</label><input type="date" id="sIn" required class="field" onchange="syncCheckout('sIn','sOut')"></div>
+          <div><label class="label">Check-Out</label><input type="date" id="sOut" required class="field"></div>
+        </div>
+        <button type="submit" class="gold-btn px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 min-h-[44px]"><i class="fa-solid fa-magnifying-glass"></i> Check Availability</button>
+      </form>
+      <div class="flex items-center justify-between glass-panel rounded-2xl p-4 mb-8 border border-gold-500/20 text-xs">
+        <span class="text-gray-400">Inventory status:</span>
+        <span id="liveSummary" class="text-gold-400 font-medium"></span>
+      </div>
+      <div id="allRooms" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div id="tab-about" class="tab-page hidden">
+  <section class="py-16 bg-dark-900 border-b border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold tracking-widest text-gold-500 uppercase block mb-2">About Us</span>
+      <h1 class="font-serif text-3xl sm:text-6xl font-medium text-white mb-3">Our Story</h1>
+      <p class="text-gray-400 text-xs sm:text-sm max-w-xl mx-auto">A legacy of luxury, comfort, elegance and unmatched trust.</p>
+    </div>
+  </section>
+  <section class="py-16 sm:py-24 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+        <div class="lg:col-span-6">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-gold-500/30">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Grand Lobby" class="w-full h-[320px] sm:h-[450px] object-cover" onerror="this.src='https://placehold.co/1000x800/121619/D4AF37?text=Grand+Lobby'">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 p-4 glass-panel rounded-2xl">
+              <p class="text-xs text-gold-400 font-serif font-bold">Royal Grand Sanctuary</p>
+              <p class="text-[11px] text-gray-300">Crafted with timeless elegance for distinguished guests.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-bold tracking-widest text-gold-500 uppercase">Welcome to Royal Grand</span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-white leading-tight">More Than Just <br><span class="italic text-gold-400">a Luxury Hotel</span></h2>
+          <p class="text-gray-300 text-sm leading-relaxed font-light">Royal Grand Hotel & Resort is a destination built around comfort, elegance and world-class hospitality. We aim to create unforgettable experiences with exceptional service, modern amenities and a warm atmosphere.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-gold-500/20">
+            <div class="glass-panel p-4 rounded-2xl flex items-center gap-3"><i class="fa-solid fa-hourglass-half text-gold-400"></i><div><div class="font-serif font-bold text-xl text-white">10+</div><div class="text-[10px] text-gray-400 uppercase tracking-wider">Years Experience</div></div></div>
+            <div class="glass-panel p-4 rounded-2xl flex items-center gap-3"><i class="fa-solid fa-hotel text-gold-400"></i><div><div class="font-serif font-bold text-xl text-white">50+</div><div class="text-[10px] text-gray-400 uppercase tracking-wider">Rooms & Suites</div></div></div>
+            <div class="glass-panel p-4 rounded-2xl flex items-center gap-3"><i class="fa-solid fa-smile text-gold-400"></i><div><div class="font-serif font-bold text-xl text-white">100%</div><div class="text-[10px] text-gray-400 uppercase tracking-wider">Satisfaction</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="glass-panel p-8 rounded-3xl space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 mb-2"><i class="fa-solid fa-eye"></i></div>
+          <h3 class="font-serif text-2xl font-bold text-white">Our Vision</h3>
+          <p class="text-gray-300 text-sm leading-relaxed font-light">To be a leading hotel brand known for excellence, innovation and memorable stays through bespoke hospitality and timeless luxury.</p>
+        </div>
+        <div class="glass-panel p-8 rounded-3xl border-gold-500/30 bg-gold-500/5 flex flex-col justify-center relative">
+          <i class="fa-solid fa-quote-left text-gold-500/20 text-6xl absolute top-4 left-4"></i>
+          <p class="font-serif italic text-gold-200 text-lg leading-relaxed pl-6 relative z-10">"Hospitality is not just about serving, it's about making people feel at home, no matter where they are."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<div id="tab-services" class="tab-page hidden">
+  <section class="py-16 sm:py-24 bg-dark-900 border-b border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold tracking-widest text-gold-500 uppercase block mb-2">Our Services</span>
+      <h1 class="font-serif text-3xl sm:text-6xl font-medium text-white mb-3">World-Class Services</h1>
+      <p class="text-gray-300 text-sm max-w-xl mx-auto">Everything you need for a perfect stay.</p>
+    </div>
+  </section>
+  <section class="py-16 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= SUPPORT ================= -->
+<div id="tab-support" class="tab-page hidden">
+  <section class="py-16 bg-dark-900 border-b border-gold-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-xs font-bold tracking-widest text-gold-500 uppercase block mb-2">Guest Support</span>
+      <h1 class="font-serif text-3xl sm:text-6xl font-medium text-white mb-3">How Can We Help?</h1>
+      <p class="text-gray-400 text-sm max-w-xl mx-auto">Send us a request, track your ticket, look up a reservation, or browse common questions.</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-dark-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-8">
+      <!-- Contact form -->
+      <div class="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-8">
+        <h2 class="font-serif text-2xl font-bold text-white mb-1">Contact Our Team</h2>
+        <p class="text-xs text-gray-400 mb-6">We typically respond within a few hours.</p>
+        <form id="ticketForm" onsubmit="submitTicket(event)" class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div><label class="label">Full Name</label><input id="tkName" required class="field" placeholder="John Doe"></div>
+            <div><label class="label">Email</label><input type="email" id="tkEmail" required class="field" placeholder="john@example.com"></div>
+          </div>
+          <div>
+            <label class="label">Topic</label>
+            <select id="tkTopic" class="field" id="tkTopic"></select>
+          </div>
+          <div><label class="label">Message</label><textarea id="tkMessage" rows="5" required class="field resize-none" placeholder="How can we help you?"></textarea></div>
+          <button type="submit" class="gold-btn w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest min-h-[48px]">Submit Request</button>
+        </form>
+        <div id="ticketSuccess" class="hidden mt-6 p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30">
+          <p class="text-emerald-400 font-bold text-sm"><i class="fa-solid fa-circle-check mr-1"></i> Request received</p>
+          <p class="text-xs text-gray-300 mt-1">Your reference is <span id="ticketRef" class="font-mono text-gold-400 font-bold"></span>. Track it anytime with your email below.</p>
+        </div>
+      </div>
+
+      <!-- Side panels -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="glass-panel rounded-3xl p-6 space-y-4">
+          <h3 class="font-serif text-xl font-bold text-white">Concierge Desk</h3>
+          <div class="text-sm space-y-3 text-gray-300">
+            <p><i class="fa-solid fa-phone text-gold-500 w-5"></i> +92 348 123456</p>
+            <p><i class="fa-solid fa-envelope text-gold-500 w-5"></i> info@royalgrandhotel.com</p>
+            <p><i class="fa-solid fa-location-dot text-gold-500 w-5"></i> 123 Luxury Street, Islamabad</p>
+            <p><i class="fa-solid fa-clock text-gold-500 w-5"></i> Front desk open 24/7</p>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-6 space-y-4">
+          <h3 class="font-serif text-xl font-bold text-white">Booking Lookup</h3>
+          <form onsubmit="lookupBooking(event)" class="space-y-3">
+            <input id="bkLookupId" required class="field" placeholder="Reservation ID (e.g. RG-1001)">
+            <input type="email" id="bkLookupEmail" required class="field" placeholder="Email used when booking">
+            <button class="btn-ghost w-full py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider">Find Reservation</button>
+          </form>
+          <div id="bkLookupResult"></div>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-6 space-y-4">
+          <h3 class="font-serif text-xl font-bold text-white">Track Your Requests</h3>
+          <form onsubmit="lookupTickets(event)" class="flex gap-2">
+            <input type="email" id="ticketLookupEmail" required class="field" placeholder="Your email">
+            <button class="btn-ghost px-4 rounded-xl text-xs font-bold uppercase">Check</button>
+          </form>
+          <div id="ticketResults" class="space-y-3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-dark-900 border-t border-gold-500/10">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="font-serif text-3xl font-bold text-white text-center mb-8">Frequently Asked Questions</h2>
+      <div id="faqList" class="glass-panel rounded-3xl px-6 sm:px-8"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ADMIN ================= -->
+<div id="tab-admin" class="tab-page hidden min-h-screen pt-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 pb-12">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 text-gold-400 text-xs font-bold uppercase tracking-wider mb-1"><i class="fa-solid fa-shield-halved"></i> Management Portal</div>
+        <h1 class="font-serif text-2xl sm:text-3xl font-bold text-white">Hotel Admin Dashboard</h1>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="openBookingModal(null,null,null,'walkin')" class="gold-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center gap-2"><i class="fa-solid fa-plus"></i> Walk-in Booking</button>
+        <button onclick="adminLogout()" class="btn-ghost px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider"><i class="fa-solid fa-right-from-bracket mr-1"></i> Lock</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-panel p-5 rounded-2xl"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Total Revenue</span><div id="mRevenue" class="text-2xl font-serif font-bold text-gold-400 mt-1">$0</div></div>
+      <div class="glass-panel p-5 rounded-2xl"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Active Bookings</span><div id="mActive" class="text-2xl font-serif font-bold text-white mt-1">0</div></div>
+      <div class="glass-panel p-5 rounded-2xl"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Occupied Tonight</span><div id="mOccupancy" class="text-2xl font-serif font-bold text-emerald-400 mt-1">0 / 0</div></div>
+      <div class="glass-panel p-5 rounded-2xl"><span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Open Support Tickets</span><div id="mTickets" class="text-2xl font-serif font-bold text-amber-400 mt-1">0</div></div>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      <button class="admin-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider" data-admin-tab="board" onclick="setAdminSection('board')">Room Board</button>
+      <button class="admin-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider" data-admin-tab="bookings" onclick="setAdminSection('bookings')">Bookings</button>
+      <button class="admin-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider" data-admin-tab="rooms" onclick="setAdminSection('rooms')">Rooms & Inventory</button>
+      <button class="admin-tab px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider" data-admin-tab="support" onclick="setAdminSection('support')">Support Inbox</button>
+    </div>
+
+    <!-- Room Board -->
+    <div id="adm-board" class="admin-section glass-panel rounded-3xl p-4 sm:p-6 space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div><h2 class="font-serif text-xl font-bold text-white">Room Board</h2><p class="text-xs text-gray-400">Each bar is a reservation. Blue = confirmed, amber = checked in.</p></div>
+        <div class="flex items-center gap-2">
+          <button onclick="boardShift(-7)" class="admin-tab px-3 py-2 rounded-lg text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+          <button onclick="boardToday()" class="admin-tab px-3 py-2 rounded-lg text-xs font-bold">Today</button>
+          <button onclick="boardShift(7)" class="admin-tab px-3 py-2 rounded-lg text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+          <span id="boardRange" class="text-gold-400 text-xs font-bold ml-2"></span>
+        </div>
+      </div>
+      <div id="boardWrap" class="overflow-x-auto rounded-2xl border border-white/10 bg-dark-950"></div>
+    </div>
+
+    <!-- Bookings -->
+    <div id="adm-bookings" class="admin-section hidden glass-panel rounded-3xl p-4 sm:p-6 space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between gap-3">
+        <div><h2 class="font-serif text-xl font-bold text-white">Reservations</h2><p class="text-xs text-gray-400">Check guests in and out, or cancel bookings.</p></div>
+        <div class="flex gap-2">
+          <div class="relative"><i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-500 text-xs"></i>
+            <input id="bookingSearch" oninput="renderAdminBookings()" placeholder="Search guest, ID, room…" class="field pl-8 py-2.5 text-xs w-56"></div>
+          <select id="bookingStatusFilter" onchange="renderAdminBookings()" class="field py-2.5 text-xs w-40">
+            <option value="all">All statuses</option>
+            <option>Confirmed</option><option>Checked-In</option><option>Checked-Out</option><option>Cancelled</option>
+          </select>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs text-gray-300 min-w-[820px]">
+          <thead class="uppercase font-semibold text-gray-400 border-b border-white/10">
+            <tr><th class="p-3">ID</th><th class="p-3">Guest</th><th class="p-3">Room</th><th class="p-3">Stay</th><th class="p-3">Total</th><th class="p-3">Status</th><th class="p-3 text-right">Actions</th></tr>
+          </thead>
+          <tbody id="bookingsBody" class="divide-y divide-white/5"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Rooms -->
+    <div id="adm-rooms" class="admin-section hidden glass-panel rounded-3xl p-4 sm:p-6 space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between gap-3">
+        <div><h2 class="font-serif text-xl font-bold text-white">Room Inventory</h2><p class="text-xs text-gray-400">Adjust units, pricing and maintenance. Changes apply to the public site instantly.</p></div>
+        <button onclick="openRoomModal()" class="btn-ghost px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider self-start"><i class="fa-solid fa-plus mr-1"></i> Add Room Category</button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs text-gray-300 min-w-[760px]">
+          <thead class="uppercase font-semibold text-gray-400 border-b border-white/10">
+            <tr><th class="p-3">Room</th><th class="p-3">Rate</th><th class="p-3">Total Units</th><th class="p-3">Status</th><th class="p-3 text-right">Actions</th></tr>
+          </thead>
+          <tbody id="roomsBody" class="divide-y divide-white/5"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Support inbox -->
+    <div id="adm-support" class="admin-section hidden grid lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-5 glass-panel rounded-3xl p-4 sm:p-6">
+        <h2 class="font-serif text-xl font-bold text-white mb-4">Support Tickets</h2>
+        <div id="ticketList" class="space-y-3 max-h-[600px] overflow-y-auto pr-1"></div>
+      </div>
+      <div class="lg:col-span-7 glass-panel rounded-3xl p-4 sm:p-6">
+        <div id="ticketThread"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-dark-950 border-t border-gold-500/20 pt-16 pb-28 sm:pb-12 text-gray-400 text-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl border border-gold-500/40 flex items-center justify-center bg-gold-500/10"><i class="fa-solid fa-crown text-gold-500"></i></div>
+        <div>
+          <span class="block font-serif text-lg tracking-widest font-bold text-white uppercase leading-tight">Royal Grand</span>
+          <span class="block text-[9px] tracking-[0.2em] text-gold-400 uppercase">Hotel & Resort</span>
+        </div>
+      </div>
+      <p class="text-xs leading-relaxed">Luxury, comfort and real-time booking in one place. Your ultimate retreat in Islamabad.</p>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-serif text-white font-bold text-base">Quick Links</h4>
+      <ul class="space-y-2 text-xs">
+        <li><button onclick="switchTab('home')" class="hover:text-gold-400">Home</button></li>
+        <li><button onclick="switchTab('rooms')" class="hover:text-gold-400">Rooms & Suites</button></li>
+        <li><button onclick="switchTab('services')" class="hover:text-gold-400">Services</button></li>
+        <li><button onclick="switchTab('support')" class="hover:text-gold-400">Support</button></li>
+      </ul>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-serif text-white font-bold text-base">Contact</h4>
+      <ul class="space-y-2 text-xs">
+        <li><i class="fa-solid fa-phone text-gold-500 w-4"></i> +92 348 123456</li>
+        <li><i class="fa-solid fa-envelope text-gold-500 w-4"></i> info@royalgrandhotel.com</li>
+        <li><i class="fa-solid fa-location-dot text-gold-500 w-4"></i> 123 Luxury Street, Islamabad</li>
+      </ul>
+    </div>
+    <div class="space-y-3">
+      <h4 class="font-serif text-white font-bold text-base">Follow Us</h4>
+      <div class="flex gap-3">
+        <a href="javascript:void(0)" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-gold-400"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+        <a href="javascript:void(0)" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-gold-400"><i class="fa-brands fa-instagram text-xs"></i></a>
+        <a href="javascript:void(0)" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-gold-400"><i class="fa-brands fa-x-twitter text-xs"></i></a>
+        <a href="javascript:void(0)" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-gold-400"><i class="fa-brands fa-youtube text-xs"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+    <p>© 2026 Royal Grand Hotel & Resort. All rights reserved.</p>
+    <div class="flex gap-4"><a href="javascript:void(0)" class="hover:text-gold-400">Privacy Policy</a><span>|</span><a href="javascript:void(0)" class="hover:text-gold-400">Terms & Conditions</a></div>
+  </div>
+</footer>
+
+<!-- ================= CHAT WIDGET ================= -->
+<button id="chatFab" onclick="toggleChat()" class="fixed bottom-24 sm:bottom-6 right-4 sm:right-6 z-40 gold-btn w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-xl" aria-label="Open chat">
+  <i class="fa-solid fa-comments"></i>
+</button>
+<div id="chatPanel" class="hidden fixed bottom-40 sm:bottom-24 right-4 sm:right-6 z-40 w-[calc(100vw-2rem)] max-w-sm flex-col glass-panel rounded-2xl border border-gold-500/30 shadow-2xl overflow-hidden" style="height:480px;max-height:70vh">
+  <div class="px-4 py-3 border-b border-white/10 flex items-center justify-between bg-dark-900/80">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-gold-500/15 border border-gold-500/40 flex items-center justify-center text-gold-400"><i class="fa-solid fa-concierge-bell text-sm"></i></div>
+      <div><p class="text-sm font-bold text-white">Royal Grand Concierge</p><p class="text-[10px] text-emerald-400"><i class="fa-solid fa-circle text-[6px]"></i> Online</p></div>
+    </div>
+    <button onclick="toggleChat(false)" class="text-gray-400 hover:text-white p-2"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+  <div class="px-3 pb-2 flex gap-2 overflow-x-auto">
+    <button onclick="sendChat('Check-in time')" class="whitespace-nowrap text-[11px] px-3 py-1.5 rounded-full border border-gold-500/30 text-gold-400 hover:bg-gold-500/10">Check-in time</button>
+    <button onclick="sendChat('Cancellation policy')" class="whitespace-nowrap text-[11px] px-3 py-1.5 rounded-full border border-gold-500/30 text-gold-400 hover:bg-gold-500/10">Cancellation</button>
+    <button onclick="sendChat('Airport transfer')" class="whitespace-nowrap text-[11px] px-3 py-1.5 rounded-full border border-gold-500/30 text-gold-400 hover:bg-gold-500/10">Airport transfer</button>
+    <button onclick="sendChat('I want to talk to a person')" class="whitespace-nowrap text-[11px] px-3 py-1.5 rounded-full border border-gold-500/30 text-gold-400 hover:bg-gold-500/10">Talk to a person</button>
+  </div>
+  <form onsubmit="event.preventDefault();sendChat()" class="p-3 border-t border-white/10 flex gap-2">
+    <input id="chatInput" class="field py-2.5 text-xs" placeholder="Ask about rooms, policies or your booking…" autocomplete="off">
+    <button class="gold-btn px-4 rounded-xl"><i class="fa-solid fa-paper-plane text-xs"></i></button>
+  </form>
+</div>
+
+<!-- ================= MODALS ================= -->
+
+<!-- Booking / Walk-in -->
+<div id="bookingModal" class="modal hidden">
+  <div class="glass-panel max-w-xl w-full rounded-3xl p-6 sm:p-8 border border-gold-500/30 relative shadow-2xl max-h-[92vh] overflow-y-auto">
+    <button onclick="closeModal('bookingModal')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
+    <span id="bkEyebrow" class="text-xs text-gold-400 uppercase font-bold tracking-wider">Reservation</span>
+    <h3 id="bkTitle" class="font-serif text-2xl font-bold text-white mb-5">Book Your Luxury Stay</h3>
+    <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-4">
+      <input type="hidden" id="bkMode" value="online">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="label">Full Name</label><input id="bkName" required class="field" placeholder="e.g. John Doe"></div>
+        <div><label class="label">Email</label><input type="email" id="bkEmail" class="field" placeholder="john@example.com"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="label">Phone</label><input type="tel" id="bkPhone" required class="field" placeholder="+92 ..."></div>
+        <div><label class="label">Guests</label>
+          <select id="bkGuests" class="field" onchange="updateBookingSummary()">
+            <option value="1">1 Guest</option><option value="2" selected>2 Guests</option><option value="3">3 Guests</option><option value="4">4 Guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div><label class="label">Check-In</label><input type="date" id="bkIn" required class="field" onchange="syncCheckout('bkIn','bkOut');updateBookingSummary()"></div>
+        <div><label class="label">Check-Out</label><input type="date" id="bkOut" required class="field" onchange="updateBookingSummary()"></div>
+      </div>
+      <div><label class="label">Room</label><select id="bkRoom" class="field" onchange="updateBookingSummary()"></select></div>
+      <div><label class="label">Special Requests (optional)</label><textarea id="bkNotes" rows="2" class="field resize-none" placeholder="Late arrival, extra pillows, etc."></textarea></div>
+      <div id="bkSummary" class="p-4 rounded-xl bg-white/5 border border-white/10 text-sm text-gray-300"></div>
+      <button type="submit" id="bkSubmit" class="gold-btn w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-widest min-h-[48px]">Confirm Reservation</button>
+    </form>
+  </div>
+</div>
+
+<!-- Room category -->
+<div id="roomModal" class="modal hidden">
+  <div class="glass-panel max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-gold-500/30 relative shadow-2xl max-h-[92vh] overflow-y-auto">
+    <button onclick="closeModal('roomModal')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
+    <span class="text-xs text-gold-400 uppercase font-bold">Inventory</span>
+    <h3 id="roomModalTitle" class="font-serif text-2xl font-bold text-white mb-5">Room Category</h3>
+    <form onsubmit="saveRoom(event)" class="space-y-4">
+      <div><label class="label">Room Title</label><input id="rfTitle" required class="field" placeholder="e.g. Royal Master Suite"></div>
+      <div class="grid grid-cols-3 gap-4">
+        <div><label class="label">Rate ($)</label><input type="number" min="1" id="rfPrice" required class="field"></div>
+        <div><label class="label">Units</label><input type="number" min="1" id="rfTotal" required class="field"></div>
+        <div><label class="label">Max Guests</label><input type="number" min="1" max="10" id="rfGuests" required class="field"></div>
+      </div>
+      <div><label class="label">Image URL</label><input id="rfImg" class="field" placeholder="https://images.unsplash.com/..."></div>
+      <div><label class="label">Description</label><textarea id="rfDesc" rows="3" class="field resize-none"></textarea></div>
+      <button type="submit" class="gold-btn w-full py-3 rounded-xl text-xs font-bold uppercase tracking-widest min-h-[44px]">Save Room</button>
+    </form>
+  </div>
+</div>
+
+<!-- Admin PIN -->
+<div id="adminLoginModal" class="modal hidden">
+  <div class="glass-panel max-w-sm w-full rounded-3xl p-6 sm:p-8 border border-gold-500/30 relative shadow-2xl text-center">
+    <button onclick="closeModal('adminLoginModal')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl p-2"><i class="fa-solid fa-xmark"></i></button>
+    <div class="w-12 h-12 rounded-full bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 text-xl mx-auto mb-3"><i class="fa-solid fa-lock"></i></div>
+    <h3 class="font-serif text-xl font-bold text-white">Staff Access</h3>
+    <p class="text-xs text-gray-400 mb-5">Enter your management PIN to continue.</p>
+    <form onsubmit="submitPin(event)" class="space-y-3">
+      <input type="password" id="pinInput" inputmode="numeric" required class="field text-center tracking-[0.5em] text-lg" placeholder="••••">
+      <p id="pinError" class="hidden text-xs text-red-400">Incorrect PIN. Please try again.</p>
+      <button class="gold-btn w-full py-3 rounded-xl text-xs font-bold uppercase tracking-widest">Unlock Dashboard</button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-28 sm:bottom-6 right-4 sm:right-6 z-[70] glass-panel border border-gold-500/40 rounded-xl p-4 flex items-center gap-3 shadow-2xl max-w-sm transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+  <div id="toastIcon" class="w-8 h-8 rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center flex-shrink-0"></div>
+  <div>
+    <h4 id="toastTitle" class="font-bold text-xs uppercase text-gold-400"></h4>
+    <p id="toastMsg" class="text-xs text-gray-300"></p>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   CONFIG
+   ===================================================================== */
+const ADMIN_PIN = '1234';                       // Demo only. Use real server-side auth in production.
+const HOTEL = { phone: '+92 348 554 9277', email: 'info@royalgrandhotel.com' };
+const KEYS = { rooms: 'rg_v3_rooms', bookings: 'rg_v3_bookings', tickets: 'rg_v3_tickets' };
+const ACTIVE = ['Confirmed', 'Checked-In'];     // statuses that hold inventory
+const SUPPORT_TOPICS = ['Reservation', 'Billing & Payments', 'Room Issue', 'Spa & Wellness', 'Events & Conferences', 'Other'];
+
+const FAQ = [
+  { keys:['check in','checkin','arrival','arrive'], q:'What time is check-in?', a:'Check-in starts at 2:00 PM. Early check-in is subject to availability, so please ask our concierge.' },
+  { keys:['check out','checkout','late'], q:'What time is check-out?', a:'Check-out is by 12:00 PM. Late check-out can be arranged on request, subject to availability.' },
+  { keys:['cancel','refund'], q:'What is the cancellation policy?', a:'Free cancellation is available up to 48 hours before check-in. Later cancellations are charged the first night.' },
+  { keys:['airport','transfer','pickup','pick up'], q:'Do you offer airport transfers?', a:'Yes. Airport transfers can be arranged through our concierge. Send your flight details through the Support page.' },
+  { keys:['parking','park'], q:'Is parking available?', a:'Complimentary parking is available for all in-house guests.' },
+  { keys:['wifi','wi-fi','internet'], q:'Is Wi-Fi available?', a:'High-speed Wi-Fi is complimentary throughout the hotel.' },
+  { keys:['breakfast','dining','restaurant','food','menu'], q:'Where can I dine?', a:'Our fine dining restaurant serves local and international cuisine. Breakfast is included with Executive rooms and above.' },
+  { keys:['pet','dog','cat'], q:'Are pets allowed?', a:'Pets are not permitted, except certified assistance animals.' },
+  { keys:['price','rate','cost','tax'], q:'What do rooms cost?', a:'Nightly rates are shown on each room. Applicable taxes are shown at checkout.' }
+];
+
+const SERVICES = [
+  { icon:'fa-bed', title:'Luxury Rooms & Suites', desc:'Spacious, elegant and fully equipped with 24/7 room service and private balconies.', img:'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80', go:'rooms', cta:'View Rooms' },
+  { icon:'fa-utensils', title:'Fine Dining Restaurant', desc:'Local and international cuisine prepared by our award-winning chefs.', img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80', go:'support', cta:'Make an Enquiry' },
+  { icon:'fa-spa', title:'Spa & Wellness', desc:'Premium spa services, aromatherapy and thermal massages.', img:'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80', go:'support', cta:'Book a Treatment' },
+  { icon:'fa-person-swimming', title:'Swimming Pool', desc:'Outdoor infinity pool and heated indoor pools with poolside lounges.', img:'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80', go:'support', cta:'Ask About Access' },
+  { icon:'fa-dumbbell', title:'Fitness Center', desc:'Modern gym facilities, cardio zones and certified personal trainers.', img:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80', go:'support', cta:'Ask About Access' },
+  { icon:'fa-champagne-glasses', title:'Events & Conferences', desc:'Grand venues for weddings, corporate summits and business events.', img:'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80', go:'support', cta:'Plan an Event' }
+];
+
+/* =====================================================================
+   DATE & FORMAT HELPERS (local-time safe)
+   ===================================================================== */
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2, '0');
+const toISO = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const todayISO = () => toISO(new Date());
+const addDays = (iso, n) => { const d = new Date(iso + 'T00:00:00'); d.setDate(d.getDate() + n); return toISO(d); };
+const nightsBetween = (a, b) => Math.round((new Date(b + 'T00:00:00') - new Date(a + 'T00:00:00')) / 86400000);
+const money = n => '$' + Number(n || 0).toLocaleString('en-US');
+const fmt = iso => new Date(iso + 'T00:00:00').toLocaleDateString('en-US', { month:'short', day:'numeric' });
+const fmtTime = iso => new Date(iso).toLocaleString('en-US', { dateStyle:'medium', timeStyle:'short' });
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+const randId = (prefix, min, span) => prefix + (min + Math.floor(Math.random() * span));
+
+/* =====================================================================
+   DATA & STATE
+   ===================================================================== */
+const DEFAULT_ROOMS = [
+  { id:'room-1', title:'Deluxe Room', price:120, totalQty:10, maxGuests:2, maintenance:false,
+    img:'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80',
+    desc:'Spacious room with plush king bedding, garden views and an executive workspace.' },
+  { id:'room-2', title:'Executive Room', price:180, totalQty:6, maxGuests:3, maintenance:false,
+    img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
+    desc:'High-floor stay with Executive Lounge access, evening cocktails and complimentary breakfast.' },
+  { id:'room-3', title:'Suite Room', price:250, totalQty:4, maxGuests:4, maintenance:false,
+    img:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80',
+    desc:'Generous living area, separate master bedroom and an oversized soaking tub.' },
+  { id:'room-4', title:'Royal Penthouse Suite', price:450, totalQty:2, maxGuests:4, maintenance:false,
+    img:'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80',
+    desc:'Panoramic city views, private jacuzzi, butler service and custom marble finishes.' }
+];
+
+const DEFAULT_BOOKINGS = [
+  { id:'RG-1001', guestName:'Hamza Malik', email:'hamza@example.com', phone:'+92 348 554 9277', roomId:'room-1', roomTitle:'Deluxe Room',
+    checkIn:todayISO(), checkOut:addDays(todayISO(), 3), guests:2, notes:'', amount:360, status:'Confirmed', source:'Online', createdAt:new Date().toISOString() },
+  { id:'RG-1002', guestName:'Sarah Jenkins', email:'sarah.j@gmail.com', phone:'+1 415 882 1290', roomId:'room-2', roomTitle:'Executive Room',
+    checkIn:addDays(todayISO(), -1), checkOut:addDays(todayISO(), 2), guests:1, notes:'Late arrival', amount:540, status:'Checked-In', source:'Online', createdAt:new Date().toISOString() }
+];
+
+const DEFAULT_TICKETS = [
+  { id:'TK-48213', name:'Sarah Jenkins', email:'sarah.j@gmail.com', topic:'Room Issue',
+    message:'The air conditioning in my room is quite noisy. Could someone take a look?',
+    status:'Open', replies:[], createdAt:new Date().toISOString() }
+];
+
+function load(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(fallback));
+  } catch (e) {
+    return JSON.parse(JSON.stringify(fallback));
+  }
+}
+function save() {
+  try {
+    localStorage.setItem(KEYS.rooms, JSON.stringify(state.rooms));
+    localStorage.setItem(KEYS.bookings, JSON.stringify(state.bookings));
+    localStorage.setItem(KEYS.tickets, JSON.stringify(state.tickets));
+  } catch (e) { console.warn('Storage unavailable', e); }
+}
+
+const state = {
+  rooms: load(KEYS.rooms, DEFAULT_ROOMS),
+  bookings: load(KEYS.bookings, DEFAULT_BOOKINGS),
+  tickets: load(KEYS.tickets, DEFAULT_TICKETS)
+};
+
+let searchRange = { from: todayISO(), to: addDays(todayISO(), 1) };
+let boardStart = todayISO();
+let selectedTicketId = null;
+let editingRoomId = null;
+let adminUnlocked = sessionStorage.getItem('rg_admin') === '1';
+
+const findRoom = id => state.rooms.find(r => r.id === id);
+const findBooking = id => state.bookings.find(b => b.id === id);
+
+/* =====================================================================
+   AVAILABILITY ENGINE
+   A night is occupied by a booking when checkIn <= night < checkOut.
+   ===================================================================== */
+function freeUnits(room, from, to) {
+  const nights = nightsBetween(from, to);
+  if (!room || room.maintenance || nights < 1) return 0;
+  let worst = room.totalQty;
+  for (let n = from; n < to; n = addDays(n, 1)) {
+    const booked = state.bookings.filter(b =>
+      b.roomId === room.id && ACTIVE.includes(b.status) && b.checkIn <= n && b.checkOut > n
+    ).length;
+    worst = Math.min(worst, room.totalQty - booked);
+  }
+  return Math.max(0, worst);
+}
+
+function peakBooked(room) {
+  const active = state.bookings.filter(b => b.roomId === room.id && ACTIVE.includes(b.status));
+  let peak = 0;
+  active.forEach(b => {
+    for (let n = b.checkIn; n < b.checkOut; n = addDays(n, 1)) {
+      const c = active.filter(x => x.checkIn <= n && x.checkOut > n).length;
+      if (c > peak) peak = c;
+    }
+  });
+  return peak;
+}
+
+/* =====================================================================
+   RENDERING
+   ===================================================================== */
+function commit() { save(); renderAll(); }
+
+function renderAll() {
+  renderPublicRooms();
+  renderRoomBoard();
+  renderAdminBookings();
+  renderAdminRooms();
+  renderTickets();
+  updateMetrics();
+}
+
+function statusPill(s) {
+  const map = {
+    'Confirmed':'bg-blue-500/15 text-blue-400 border-blue-500/30',
+    'Checked-In':'bg-amber-500/15 text-amber-400 border-amber-500/30',
+    'Checked-Out':'bg-gray-500/15 text-gray-400 border-gray-500/30',
+    'Cancelled':'bg-red-500/10 text-red-400 border-red-500/30',
+    'Open':'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+    'Resolved':'bg-gray-500/15 text-gray-300 border-gray-500/30'
+  };
+  return `<span class="px-2.5 py-1 border rounded-full text-[10px] font-bold uppercase whitespace-nowrap ${map[s] || ''}">${esc(s)}</span>`;
+}
+
+/* ---------- Public room cards ---------- */
+function roomCard(room, from, to) {
+  const free = freeUnits(room, from, to);
+  const ok = free > 0;
+  const badge = ok
+    ? `<span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-bold px-3 py-1 rounded-full">${free} Left</span>`
+    : `<span class="bg-red-500/20 text-red-400 border border-red-500/40 text-[10px] font-bold px-3 py-1 rounded-full">${room.maintenance ? 'Maintenance' : 'Fully Booked'}</span>`;
+  const btn = ok
+    ? `<button onclick="openBookingModal('${room.id}','${from}','${to}')" class="gold-btn w-full py-3 rounded-xl text-xs font-bold uppercase tracking-wider min-h-[44px]">Book Room</button>`
+    : `<button disabled class="w-full bg-white/5 text-gray-500 border border-white/10 py-3 rounded-xl text-xs font-bold uppercase tracking-wider cursor-not-allowed min-h-[44px]">Unavailable</button>`;
+  const fallback = `https://placehold.co/800x600/121619/D4AF37?text=${encodeURIComponent(room.title)}`;
+  return `
+    <div class="glass-panel rounded-3xl overflow-hidden card-hover border border-gold-500/20 group flex flex-col justify-between">
+      <div>
+        <div class="relative h-56 overflow-hidden">
+          <img src="${esc(room.img)}" alt="${esc(room.title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.src='${fallback}'">
+          <div class="absolute top-3 left-3">${badge}</div>
+          <div class="absolute bottom-3 right-3 bg-dark-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-gold-500/30 text-gold-400 font-serif font-bold text-sm">
+            ${money(room.price)} <span class="text-[10px] font-sans font-normal text-gray-300">/ night</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-serif text-xl font-bold text-white mb-2">${esc(room.title)}</h3>
+          <p class="text-xs text-gray-300 leading-relaxed font-light mb-4">${esc(room.desc)}</p>
+        </div>
+      </div>
+      <div class="p-6 pt-0 border-t border-white/5 space-y-3">
+        <div class="flex items-center justify-between text-xs text-gray-400">
+          <span><i class="fa-solid fa-users text-gold-400 mr-1"></i> Up to ${room.maxGuests} guests</span>
+          <span><i class="fa-solid fa-door-closed text-gold-400 mr-1"></i> ${room.totalQty} units</span>
+        </div>
+        ${btn}
+      </div>
+    </div>`;
+}
+
+function renderRoomCards(containerId, from, to) {
+  const el = $(containerId);
+  if (el) el.innerHTML = state.rooms.map(r => roomCard(r, from, to)).join('');
+}
+
+function renderPublicRooms() {
+  const t = todayISO();
+  renderRoomCards('homeRooms', t, addDays(t, 1));
+  renderRoomCards('allRooms', searchRange.from, searchRange.to);
+  const bookable = state.rooms.filter(r => freeUnits(r, searchRange.from, searchRange.to) > 0).length;
+  $('liveSummary').innerHTML = `<i class="fa-solid fa-signal text-emerald-400 mr-1"></i> ${bookable} of ${state.rooms.length} room types available, ${fmt(searchRange.from)} – ${fmt(searchRange.to)}`;
+}
+
+function renderServices() {
+  $('servicesGrid').innerHTML = SERVICES.map(s => `
+    <div class="glass-panel rounded-3xl overflow-hidden card-hover border border-gold-500/20 group flex flex-col justify-between">
+      <div>
+        <div class="relative h-56 overflow-hidden">
+          <img src="${esc(s.img)}" alt="${esc(s.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent"></div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-serif text-xl font-bold text-white mb-2">${esc(s.title)}</h3>
+          <p class="text-xs text-gray-300 leading-relaxed font-light">${esc(s.desc)}</p>
+        </div>
+      </div>
+      <div class="p-6 pt-0 border-t border-white/5">
+        <button onclick="switchTab('${s.go}')" class="text-xs font-bold text-gold-400 hover:text-gold-300 flex items-center gap-2">${esc(s.cta)} <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function renderFAQ() {
+  $('faqList').innerHTML = FAQ.map(f => `
+    <details class="border-b border-white/10 py-4 last:border-0">
+      <summary class="flex justify-between items-center cursor-pointer text-white font-semibold text-sm">
+        ${esc(f.q)} <i class="fa-solid fa-chevron-down text-gold-400 text-xs chev"></i>
+      </summary>
+      <p class="text-xs text-gray-400 leading-relaxed mt-3">${esc(f.a)}</p>
+    </details>`).join('');
+}
+
+/* ---------- Room board (Gantt-style) ---------- */
+function renderRoomBoard() {
+  const DAYS = 14, start = boardStart, end = addDays(start, DAYS);
+  const dayIdx = iso => Math.round((new Date(iso + 'T00:00:00') - new Date(start + 'T00:00:00')) / 86400000);
+  const t = todayISO();
+
+  const head = [...Array(DAYS)].map((_, i) => {
+    const d = addDays(start, i);
+    const dt = new Date(d + 'T00:00:00');
+    return `<div class="flex-1 text-center py-2 border-l border-white/5 ${d === t ? 'text-gold-400' : 'text-gray-400'}">
+      <div class="text-[10px] uppercase">${dt.toLocaleDateString('en-US', { weekday:'short' })}</div>
+      <div class="font-bold text-xs ${d === t ? 'bg-gold-500/20 rounded-full w-6 mx-auto' : ''}">${dt.getDate()}</div>
+    </div>`;
+  }).join('');
+
+  const rows = state.rooms.map(room => {
+    const items = state.bookings
+      .filter(b => b.roomId === room.id && ACTIVE.includes(b.status) && b.checkIn < end && b.checkOut > start)
+      .sort((a, b) => a.checkIn.localeCompare(b.checkIn));
+
+    // Greedy lane assignment so overlapping bookings stack instead of colliding
+    const laneEnds = [];
+    const placed = items.map(b => {
+      let lane = laneEnds.findIndex(e => e <= b.checkIn);
+      if (lane === -1) { lane = laneEnds.length; laneEnds.push(b.checkOut); }
+      else laneEnds[lane] = b.checkOut;
+      return { b, lane };
+    });
+    const lanes = Math.max(1, laneEnds.length);
+
+    const bars = placed.map(({ b, lane }) => {
+      const s = Math.max(0, dayIdx(b.checkIn));
+      const e = Math.min(DAYS, dayIdx(b.checkOut));
+      const cls = b.status === 'Checked-In' ? 'bar-checkedin' : 'bar-confirmed';
+      return `<div class="bar ${cls}"
+        style="left:calc(${s} * 100% / ${DAYS} + 2px);width:calc(${e - s} * 100% / ${DAYS} - 4px);top:${6 + lane * 32}px"
+        title="${esc(b.id)} · ${esc(b.guestName)} · ${b.checkIn} → ${b.checkOut}"
+        onclick="boardBarClick('${b.id}')">${esc(b.guestName)}</div>`;
+    }).join('');
+
+    const overlay = room.maintenance
+      ? `<div class="absolute inset-0 stripes flex items-center justify-center text-[11px] font-bold uppercase tracking-wider text-red-300">Under maintenance</div>`
+      : '';
+
+    return `<div class="flex border-t border-white/5">
+      <div class="w-44 shrink-0 p-3 sticky left-0 z-10 bg-dark-900 border-r border-white/5">
+        <div class="text-sm font-bold text-white truncate">${esc(room.title)}</div>
+        <div class="text-[10px] text-gray-500">${room.totalQty} units · ${money(room.price)}/night</div>
+      </div>
+      <div class="relative flex-1 board-grid" style="height:${lanes * 32 + 12}px">${bars}${overlay}</div>
+    </div>`;
+  }).join('');
+
+  $('boardRange').textContent = `${fmt(start)} – ${fmt(addDays(start, DAYS - 1))}`;
+  $('boardWrap').innerHTML = `<div class="min-w-[960px]">
+    <div class="flex border-b border-white/10 bg-dark-900">
+      <div class="w-44 shrink-0 p-3 text-[10px] uppercase font-semibold text-gray-400 sticky left-0 z-10 bg-dark-900 border-r border-white/5">Room</div>
+      <div class="flex-1 flex">${head}</div>
+    </div>${rows}
+  </div>`;
+}
+
+function boardBarClick(id) {
+  const b = findBooking(id);
+  if (b) notify(`${b.guestName} · ${b.roomTitle} · ${b.checkIn} → ${b.checkOut}`, b.id, 'fa-bed');
+}
+function boardShift(days) { boardStart = addDays(boardStart, days); renderRoomBoard(); }
+function boardToday() { boardStart = todayISO(); renderRoomBoard(); }
+
+/* ---------- Admin bookings ---------- */
+function renderAdminBookings() {
+  const q = $('bookingSearch').value.trim().toLowerCase();
+  const st = $('bookingStatusFilter').value;
+  const rows = state.bookings.filter(b =>
+    (st === 'all' || b.status === st) &&
+    (!q || [b.id, b.guestName, b.email, b.phone, b.roomTitle].some(v => String(v || '').toLowerCase().includes(q)))
+  );
+
+  $('bookingsBody').innerHTML = rows.length ? rows.map(b => {
+    let actions = `<span class="text-xs text-gray-500">Archived</span>`;
+    if (b.status === 'Confirmed') actions =
+      `<button onclick="setBookingStatus('${b.id}','Checked-In')" class="px-2.5 py-1 rounded-lg text-[11px] bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25">Check In</button>
+       <button onclick="setBookingStatus('${b.id}','Cancelled')" class="px-2.5 py-1 rounded-lg text-[11px] bg-red-500/15 text-red-400 border border-red-500/30 hover:bg-red-500/25">Cancel</button>`;
+    else if (b.status === 'Checked-In') actions =
+      `<button onclick="setBookingStatus('${b.id}','Checked-Out')" class="px-2.5 py-1 rounded-lg text-[11px] bg-amber-500/15 text-amber-400 border border-amber-500/30 hover:bg-amber-500/25">Check Out</button>`;
+
+    return `<tr class="hover:bg-white/5">
+      <td class="p-3 font-mono text-gold-400 font-bold">${esc(b.id)}</td>
+      <td class="p-3"><div class="font-bold text-white">${esc(b.guestName)}</div><div class="text-[10px] text-gray-500">${esc(b.email || '—')} · ${esc(b.phone)}</div></td>
+      <td class="p-3">${esc(b.roomTitle)}</td>
+      <td class="p-3 whitespace-nowrap">${b.checkIn} → ${b.checkOut}<div class="text-[10px] text-gray-500">${nightsBetween(b.checkIn, b.checkOut)} night(s) · ${b.guests} guest(s) · ${esc(b.source || '')}</div></td>
+      <td class="p-3 font-serif text-gold-400 font-bold">${money(b.amount)}</td>
+      <td class="p-3">${statusPill(b.status)}</td>
+      <td class="p-3 text-right"><div class="flex justify-end gap-2 flex-wrap">${actions}</div></td>
+    </tr>`;
+  }).join('') : `<tr><td colspan="7" class="p-6 text-center text-gray-500">No reservations match your filters.</td></tr>`;
+}
+
+function setBookingStatus(id, status) {
+  const b = findBooking(id);
+  if (!b) return;
+  if (status === 'Cancelled' && !confirm(`Cancel reservation ${id} for ${b.guestName}?`)) return;
+  b.status = status;
+  commit();
+  notify(`${id} is now ${status}.`, 'Updated', 'fa-circle-check');
+}
+
+/* ---------- Admin rooms ---------- */
+function renderAdminRooms() {
+  $('roomsBody').innerHTML = state.rooms.map(r => {
+    const peak = peakBooked(r);
+    return `<tr class="hover:bg-white/5">
+      <td class="p-3"><div class="flex items-center gap-3">
+        <img src="${esc(r.img)}" class="w-12 h-10 rounded-lg object-cover border border-gold-500/30" onerror="this.src='https://placehold.co/100/121619/D4AF37?text=Room'">
+        <div><div class="font-bold text-white">${esc(r.title)}</div><div class="text-[10px] text-gray-500">Up to ${r.maxGuests} guests</div></div>
+      </div></td>
+      <td class="p-3 font-serif text-gold-400 font-bold">${money(r.price)}<span class="text-[10px] text-gray-500 font-sans font-normal"> /night</span></td>
+      <td class="p-3">
+        <div class="flex items-center gap-2">
+          <button onclick="adjustUnits('${r.id}',-1)" class="w-7 h-7 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 font-bold">−</button>
+          <span class="font-bold text-white w-8 text-center">${r.totalQty}</span>
+          <button onclick="adjustUnits('${r.id}',1)" class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 font-bold">+</button>
+        </div>
+        <div class="text-[10px] text-gray-500 mt-1">Peak booked: ${peak}</div>
+      </td>
+      <td class="p-3">${r.maintenance ? statusPill('Cancelled').replace('Cancelled','Maintenance') : `<span class="px-2.5 py-1 border rounded-full text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-400 border-emerald-500/30">In service</span>`}</td>
+      <td class="p-3 text-right whitespace-nowrap space-x-1">
+        <button onclick="toggleMaintenance('${r.id}')" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-white/5 border border-white/10 hover:border-gold-500 text-gray-300">${r.maintenance ? 'Restore' : 'Maintenance'}</button>
+        <button onclick="openRoomModal('${r.id}')" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-gold-500/10 text-gold-400 border border-gold-500/30">Edit</button>
+        <button onclick="deleteRoom('${r.id}')" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-red-500/10 text-red-400 border border-red-500/30">Delete</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function adjustUnits(id, delta) {
+  const r = findRoom(id);
+  if (!r) return;
+  const next = r.totalQty + delta;
+  const floor = Math.max(1, peakBooked(r));
+  if (next < floor) return notify(`Cannot go below ${floor} unit(s) — that many are booked at peak.`, 'Inventory', 'fa-triangle-exclamation');
+  r.totalQty = next;
+  commit();
+}
+
+function toggleMaintenance(id) {
+  const r = findRoom(id);
+  if (!r) return;
+  r.maintenance = !r.maintenance;
+  commit();
+  notify(r.maintenance ? `${r.title} set to maintenance. New bookings are blocked.` : `${r.title} is back in service.`, 'Inventory', 'fa-wrench');
+}
+
+function deleteRoom(id) {
+  const r = findRoom(id);
+  if (!r) return;
+  if (state.bookings.some(b => b.roomId === id && ACTIVE.includes(b.status)))
+    return notify('This category has active bookings. Check them out or cancel first.', 'Cannot Delete', 'fa-xmark');
+  if (!confirm(`Delete ${r.title}? This cannot be undone.`)) return;
+  state.rooms = state.rooms.filter(x => x.id !== id);
+  commit();
+  notify(`${r.title} removed.`, 'Deleted', 'fa-trash');
+}
+
+/* ---------- Admin metrics ---------- */
+function updateMetrics() {
+  const t = todayISO();
+  const tonight = state.bookings.filter(b => ACTIVE.includes(b.status) && b.checkIn <= t && b.checkOut > t).length;
+  const units = state.rooms.reduce((s, r) => s + r.totalQty, 0);
+  $('mRevenue').textContent = money(state.bookings.filter(b => b.status !== 'Cancelled').reduce((s, b) => s + b.amount, 0));
+  $('mActive').textContent = state.bookings.filter(b => ACTIVE.includes(b.status)).length;
+  $('mOccupancy').textContent = `${tonight} / ${units}`;
+  $('mTickets').textContent = state.tickets.filter(x => x.status === 'Open').length;
+}
+
+/* =====================================================================
+   BOOKINGS (customer + walk-in)
+   ===================================================================== */
+function roomOptions() {
+  return state.rooms.map(r =>
+    `<option value="${r.id}" ${r.maintenance ? 'disabled' : ''}>${esc(r.title)} — ${money(r.price)}/night${r.maintenance ? ' (maintenance)' : ''}</option>`
+  ).join('');
+}
+
+function openBookingModal(roomId = null, checkIn = null, checkOut = null, mode = 'online') {
+  $('bookingForm').reset();
+  $('bkMode').value = mode;
+  const isWalkin = mode === 'walkin';
+  $('bkEyebrow').textContent = isWalkin ? 'Admin · Front Desk' : 'Reservation';
+  $('bkTitle').textContent = isWalkin ? 'Direct Walk-in Booking' : 'Book Your Luxury Stay';
+  $('bkSubmit').textContent = isWalkin ? 'Check In Guest' : 'Confirm Reservation';
+  $('bkEmail').required = !isWalkin;
+
+  const t = todayISO();
+  $('bkRoom').innerHTML = roomOptions();
+  $('bkIn').min = t;
+  $('bkIn').value = checkIn || t;
+  $('bkOut').value = checkOut || addDays($('bkIn').value, 1);
+  syncCheckout('bkIn', 'bkOut');
+  if (roomId) $('bkRoom').value = roomId;
+
+  updateBookingSummary();
+  openModal('bookingModal');
+}
+
+function syncCheckout(inId, outId) {
+  const i = $(inId), o = $(outId);
+  if (!i.value) return;
+  o.min = addDays(i.value, 1);
+  if (!o.value || o.value <= i.value) o.value = addDays(i.value, 1);
+}
+
+function updateBookingSummary() {
+  const room = findRoom($('bkRoom').value);
+  const ci = $('bkIn').value, co = $('bkOut').value;
+  const box = $('bkSummary'), btn = $('bkSubmit');
+  let ok = false, html = '';
+
+  if (!room || !ci || !co) {
+    html = 'Select a room and dates to see pricing.';
+  } else {
+    const n = nightsBetween(ci, co);
+    const guests = Number($('bkGuests').value);
+    if (n < 1) html = 'Check-out must be after check-in.';
+    else if (ci < todayISO()) html = 'Check-in cannot be in the past.';
+    else if (guests > room.maxGuests) html = `${esc(room.title)} accommodates up to ${room.maxGuests} guests.`;
+    else {
+      const free = freeUnits(room, ci, co);
+      if (free < 1) html = `Sorry, ${esc(room.title)} is fully booked for these dates.`;
+      else {
+        ok = true;
+        html = `<div class="flex justify-between items-center">
+                  <span>${n} night(s) × ${money(room.price)}</span>
+                  <span class="font-serif text-gold-400 font-bold text-lg">${money(n * room.price)}</span>
+                </div>
+                <div class="text-xs text-emerald-400 mt-1"><i class="fa-solid fa-circle-check"></i> ${free} unit(s) available for these dates</div>`;
+      }
+    }
+  }
+  box.innerHTML = html;
+  btn.disabled = !ok;
+}
+
+function submitBooking(e) {
+  e.preventDefault();
+  const room = findRoom($('bkRoom').value);
+  const ci = $('bkIn').value, co = $('bkOut').value;
+  const n = nightsBetween(ci, co);
+  if (!room || n < 1 || ci < todayISO()) return notify('Please choose valid dates and a room.', 'Error', 'fa-xmark');
+  if (freeUnits(room, ci, co) < 1) return notify('That room just sold out for these dates.', 'Unavailable', 'fa-xmark');
+
+  const isWalkin = $('bkMode').value === 'walkin';
+  const booking = {
+    id: newBookingId(),
+    guestName: $('bkName').value.trim(),
+    email: $('bkEmail').value.trim(),
+    phone: $('bkPhone').value.trim(),
+    roomId: room.id,
+    roomTitle: room.title,
+    checkIn: ci,
+    checkOut: co,
+    guests: Number($('bkGuests').value),
+    notes: $('bkNotes').value.trim(),
+    amount: n * room.price,
+    status: isWalkin ? 'Checked-In' : 'Confirmed',
+    source: isWalkin ? 'Walk-in' : 'Online',
+    createdAt: new Date().toISOString()
+  };
+  state.bookings.unshift(booking);
+  closeModal('bookingModal');
+  commit();
+  notify(`Reservation ${booking.id} ${isWalkin ? 'checked in' : 'confirmed'} for ${booking.guestName}.`, 'Booking Confirmed', 'fa-crown');
+}
+
+function newBookingId() {
+  let id;
+  do { id = randId('RG-', 1000, 9000); } while (findBooking(id));
+  return id;
+}
+
+function searchRooms(e) {
+  e.preventDefault();
+  const from = $('sIn').value, to = $('sOut').value;
+  if (!from || !to || nightsBetween(from, to) < 1) return notify('Please choose valid dates.', 'Error', 'fa-xmark');
+  searchRange = { from, to };
+  renderPublicRooms();
+}
+
+function lookupBooking(e) {
+  e.preventDefault();
+  const id = $('bkLookupId').value.trim().toUpperCase();
+  const email = $('bkLookupEmail').value.trim().toLowerCase();
+  const b = state.bookings.find(x => x.id === id && (x.email || '').toLowerCase() === email);
+  $('bkLookupResult').innerHTML = b
+    ? `<div class="p-4 rounded-xl bg-white/5 border border-white/10 text-sm space-y-1.5">
+         <div class="flex justify-between items-center"><span class="font-mono text-gold-400 font-bold">${esc(b.id)}</span>${statusPill(b.status)}</div>
+         <div class="text-white font-semibold">${esc(b.roomTitle)}</div>
+         <div class="text-xs text-gray-400">${b.checkIn} → ${b.checkOut} · ${nightsBetween(b.checkIn, b.checkOut)} night(s) · ${b.guests} guest(s)</div>
+         <div class="text-xs text-gray-400">Total: <span class="text-gold-400 font-bold">${money(b.amount)}</span></div>
+         <p class="text-[11px] text-gray-500 pt-1">To change or cancel, send a request below.</p>
+       </div>`
+    : `<p class="text-xs text-red-400">No reservation matches that ID and email.</p>`;
+}
+
+/* =====================================================================
+   ROOM CATEGORY CRUD (admin)
+   ===================================================================== */
+function openRoomModal(id = null) {
+  editingRoomId = id;
+  const r = id ? findRoom(id) : null;
+  $('roomModalTitle').textContent = r ? 'Edit Room Category' : 'Add New Room Category';
+  $('rfTitle').value = r?.title ?? '';
+  $('rfPrice').value = r?.price ?? '';
+  $('rfTotal').value = r?.totalQty ?? '';
+  $('rfGuests').value = r?.maxGuests ?? 2;
+  $('rfImg').value = r?.img ?? '';
+  $('rfDesc').value = r?.desc ?? '';
+  openModal('roomModal');
+}
+
+function saveRoom(e) {
+  e.preventDefault();
+  const data = {
+    title: $('rfTitle').value.trim(),
+    price: Number($('rfPrice').value),
+    totalQty: Number($('rfTotal').value),
+    maxGuests: Number($('rfGuests').value),
+    img: $('rfImg').value.trim() || 'https://placehold.co/800x600/121619/D4AF37?text=Room',
+    desc: $('rfDesc').value.trim() || 'Luxury accommodation with bespoke interior styling.'
+  };
+  if (!data.title || data.price <= 0 || data.totalQty < 1) return notify('Please check the room details.', 'Error', 'fa-xmark');
+
+  if (editingRoomId) {
+    const r = findRoom(editingRoomId);
+    const floor = peakBooked(r);
+    if (data.totalQty < floor) return notify(`Units cannot be below ${floor} (current peak bookings).`, 'Inventory', 'fa-triangle-exclamation');
+    Object.assign(r, data);
+  } else {
+    state.rooms.push({ id: 'room-' + Date.now().toString(36), ...data, maintenance: false });
+  }
+  closeModal('roomModal');
+  commit();
+  notify(`${data.title} saved.`, 'Inventory Updated', 'fa-check');
+}
+
+/* =====================================================================
+   SUPPORT: TICKETS
+   ===================================================================== */
+function newTicketId() {
+  let id;
+  do { id = randId('TK-', 10000, 90000); } while (state.tickets.some(t => t.id === id));
+  return id;
+}
+
+function submitTicket(e) {
+  e.preventDefault();
+  const ticket = {
+    id: newTicketId(),
+    name: $('tkName').value.trim(),
+    email: $('tkEmail').value.trim(),
+    topic: $('tkTopic').value,
+    message: $('tkMessage').value.trim(),
+    status: 'Open',
+    replies: [],
+    createdAt: new Date().toISOString()
+  };
+  state.tickets.push(ticket);
+  commit();
+  $('ticketRef').textContent = ticket.id;
+  $('ticketSuccess').classList.remove('hidden');
+  $('ticketLookupEmail').value = ticket.email;
+  e.target.reset();
+  notify(`Request ${ticket.id} submitted. We'll be in touch shortly.`, 'Received', 'fa-envelope-circle-check');
+}
+
+function ticketThreadMessages(t) {
+  return [{ from:'guest', text:t.message, at:t.createdAt }, ...t.replies];
+}
+
+function lookupTickets(e) {
+  e.preventDefault();
+  const email = $('ticketLookupEmail').value.trim().toLowerCase();
+  const matches = state.tickets.filter(t => (t.email || '').toLowerCase() === email);
+  $('ticketResults').innerHTML = matches.length ? matches.map(t => `
+    <div class="p-4 rounded-xl border border-white/10 bg-white/5 space-y-3">
+      <div class="flex justify-between items-center">
+        <span class="font-mono text-gold-400 text-xs font-bold">${esc(t.id)}</span>${statusPill(t.status)}
+      </div>
+      <div class="text-sm font-semibold text-white">${esc(t.topic)}</div>
+      <div class="space-y-2 max-h-48 overflow-y-auto pr-1">
+        ${ticketThreadMessages(t).map(m => `
+          <div class="text-xs p-2.5 rounded-lg ${m.from === 'staff' ? 'bg-gold-500/10 border border-gold-500/25' : 'bg-dark-900 border border-white/10'}">
+            <span class="block text-[10px] uppercase text-gray-500 mb-0.5">${m.from === 'staff' ? 'Royal Grand Team' : 'You'} · ${fmtTime(m.at)}</span>
+            <span class="whitespace-pre-wrap">${esc(m.text)}</span>
+          </div>`).join('')}
+      </div>
+      ${t.status === 'Open'
+        ? `<div class="flex gap-2">
+             <input id="gr-${t.id}" class="field text-xs py-2" placeholder="Add a message…">
+             <button onclick="guestReply('${t.id}')" class="gold-btn px-4 rounded-xl text-xs font-bold">Send</button>
+           </div>`
+        : `<p class="text-[11px] text-gray-500">This request is resolved. Submit a new request if you need more help.</p>`}
+    </div>`).join('')
+    : (email ? `<p class="text-sm text-gray-500">No requests found for this email.</p>` : '');
+}
+
+function guestReply(ticketId) {
+  const input = $('gr-' + ticketId);
+  const text = input ? input.value.trim() : '';
+  if (!text) return;
+  const t = state.tickets.find(x => x.id === ticketId);
+  if (!t) return;
+  t.replies.push({ from:'guest', text, at:new Date().toISOString() });
+  commit();
+  lookupTickets({ preventDefault(){} });
+}
+
+function renderTickets() {
+  const list = [...state.tickets].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  $('ticketList').innerHTML = list.length ? list.map(t => `
+    <button onclick="selectTicket('${t.id}')" class="w-full text-left p-4 rounded-xl border transition
+      ${t.id === selectedTicketId ? 'border-gold-500/60 bg-gold-500/10' : 'border-white/10 bg-white/5 hover:border-gold-500/40'}">
+      <div class="flex justify-between items-center mb-1">
+        <span class="font-mono text-gold-400 text-xs font-bold">${esc(t.id)}</span>${statusPill(t.status)}
+      </div>
+      <div class="text-sm font-semibold text-white">${esc(t.name)} <span class="text-[11px] text-gray-500 font-normal">· ${esc(t.topic)}</span></div>
+      <div class="text-[11px] text-gray-400 truncate">${esc(t.message)}</div>
+    </button>`).join('') : '<p class="text-gray-500 text-sm">No support tickets yet.</p>';
+
+  const t = state.tickets.find(x => x.id === selectedTicketId);
+  if (!t) {
+    $('ticketThread').innerHTML = '<p class="text-gray-500 text-sm text-center py-20">Select a ticket to view the conversation.</p>';
+    return;
+  }
+  $('ticketThread').innerHTML = `
+    <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-3 border-b border-white/10 pb-4 mb-4">
+      <div>
+        <h3 class="font-serif text-lg font-bold text-white">${esc(t.topic)} <span class="font-mono text-gold-400 text-sm">${esc(t.id)}</span></h3>
+        <p class="text-xs text-gray-400">${esc(t.name)} · ${esc(t.email)}</p>
+      </div>
+      <button onclick="setTicketStatus('${t.id}','${t.status === 'Open' ? 'Resolved' : 'Open'}')"
+        class="btn-ghost px-3 py-2 rounded-lg text-xs font-bold self-start">${t.status === 'Open' ? 'Mark Resolved' : 'Reopen'}</button>
+    </div>
+    <div class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+      ${ticketThreadMessages(t).map(m => m.from === 'staff'
+        ? `<div class="ml-10 p-3 rounded-2xl rounded-tr-sm bg-gold-500/15 border border-gold-500/30 text-sm">
+             <div class="text-[10px] uppercase text-gold-400 mb-1">Staff · ${fmtTime(m.at)}</div>
+             <div class="whitespace-pre-wrap">${esc(m.text)}</div></div>`
+        : `<div class="mr-10 p-3 rounded-2xl rounded-tl-sm bg-white/5 border border-white/10 text-sm">
+             <div class="text-[10px] uppercase text-gray-500 mb-1">Guest · ${fmtTime(m.at)}</div>
+             <div class="whitespace-pre-wrap">${esc(m.text)}</div></div>`
+      ).join('')}
+    </div>
+    <div class="mt-5 space-y-3">
+      <textarea id="staffReply" rows="3" class="field resize-none" placeholder="Write a reply to the guest…"></textarea>
+      <div class="flex justify-end">
+        <button onclick="sendStaffReply()" class="gold-btn px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider"><i class="fa-solid fa-paper-plane mr-1"></i> Send Reply</button>
+      </div>
+    </div>`;
+}
+
+function selectTicket(id) { selectedTicketId = id; renderTickets(); }
+
+function sendStaffReply() {
+  const t = state.tickets.find(x => x.id === selectedTicketId);
+  const text = $('staffReply').value.trim();
+  if (!t || !text) return;
+  t.replies.push({ from:'staff', text, at:new Date().toISOString() });
+  commit();
+  notify('Reply sent to guest.', 'Support', 'fa-paper-plane');
+}
+
+function setTicketStatus(id, status) {
+  const t = state.tickets.find(x => x.id === id);
+  if (!t) return;
+  t.status = status;
+  commit();
+}
+
+/* =====================================================================
+   CHAT CONCIERGE (rule-based)
+   ===================================================================== */
+let chatGreeted = false;
+
+function toggleChat(force) {
+  const p = $('chatPanel');
+  const open = typeof force === 'boolean' ? force : p.classList.contains('hidden');
+  p.classList.toggle('hidden', !open);
+  p.classList.toggle('flex', open);
+  if (open && !chatGreeted) {
+    chatGreeted = true;
+    setTimeout(() => addChatMsg("Welcome to Royal Grand! I can answer policy questions, look up a reservation by its ID, or connect you with our team.", 'bot'), 250);
+  }
+  if (open) setTimeout(() => $('chatInput').focus(), 100);
+}
+
+function addChatMsg(text, who) {
+  const box = $('chatMessages');
+  const wrap = document.createElement('div');
+  wrap.className = who === 'user' ? 'flex justify-end' : 'flex justify-start';
+  wrap.innerHTML = `<div class="max-w-[80%] px-3.5 py-2.5 rounded-2xl text-xs leading-relaxed whitespace-pre-wrap ${
+    who === 'user'
+      ? 'bg-gold-500/20 border border-gold-500/30 text-white rounded-br-sm'
+      : 'bg-white/5 border border-white/10 text-gray-200 rounded-bl-sm'}">${esc(text)}</div>`;
+  box.appendChild(wrap);
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendChat(preset) {
+  const input = $('chatInput');
+  const text = (typeof preset === 'string' ? preset : input.value).trim();
+  if (!text) return;
+  input.value = '';
+  addChatMsg(text, 'user');
+  setTimeout(() => addChatMsg(botAnswer(text), 'bot'), 500);
+}
+
+function botAnswer(raw) {
+  const t = raw.toLowerCase();
+
+  const idMatch = raw.match(/RG-\d{4}/i);
+  if (idMatch) {
+    const b = findBooking(idMatch[0].toUpperCase());
+    return b
+      ? `Reservation ${b.id}: ${b.roomTitle}, ${b.checkIn} to ${b.checkOut}, status ${b.status}. For changes, please use Booking Lookup or Support on our website.`
+      : `I couldn't find reservation ${idMatch[0].toUpperCase()}. Please double-check the ID, or use Booking Lookup on the Support page.`;
+  }
+  if (/human|agent|person|manager|speak|someone|call me/.test(t)) {
+    return `Of course. Please send your request from the Support page and our team will reply by email. You can also call us at ${HOTEL.phone}.`;
+  }
+  const faq = FAQ.find(f => f.keys.some(k => t.includes(k)));
+  if (faq) return faq.a;
+  if (/book|reserv|availab|room/.test(t)) {
+    return 'You can check live availability for any dates on the Rooms page and book instantly. Fully booked rooms are locked automatically.';
+  }
+  return "I'm not certain about that one. Please leave a message on the Support page and our team will get back to you.";
+}
+
+/* =====================================================================
+   ADMIN ACCESS
+   ===================================================================== */
+function requestAdmin() {
+  if (adminUnlocked) return switchTab('admin');
+  $('pinInput').value = '';
+  $('pinError').classList.add('hidden');
+  openModal('adminLoginModal');
+  setTimeout(() => $('pinInput').focus(), 80);
+}
+
+function submitPin(e) {
+  e.preventDefault();
+  if ($('pinInput').value === ADMIN_PIN) {
+    adminUnlocked = true;
+    sessionStorage.setItem('rg_admin', '1');
+    closeModal('adminLoginModal');
+    switchTab('admin');
+    notify('Welcome back. Dashboard unlocked.', 'Admin Access', 'fa-user-shield');
+  } else {
+    $('pinError').classList.remove('hidden');
+  }
+}
+
+function adminLogout() {
+  adminUnlocked = false;
+  sessionStorage.removeItem('rg_admin');
+  switchTab('home');
+}
+
+function setAdminSection(name) {
+  document.querySelectorAll('[data-admin-tab]').forEach(b => b.classList.toggle('active', b.dataset.adminTab === name));
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.toggle('hidden', s.id !== 'adm-' + name));
+}
+
+/* =====================================================================
+   NAVIGATION & UI
+   ===================================================================== */
+function switchTab(name) {
+  if (name === 'admin' && !adminUnlocked) return requestAdmin();
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.add('hidden'));
+  const page = $('tab-' + name);
+  if (page) page.classList.remove('hidden');
+  document.querySelectorAll('[data-nav]').forEach(b => b.classList.toggle('active', b.dataset.nav === name));
+  $('mobileMenu').classList.add('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMobileMenu() { $('mobileMenu').classList.toggle('hidden'); }
+
+function openModal(id) { const m = $(id); m.classList.remove('hidden'); m.classList.add('flex'); }
+function closeModal(id) { const m = $(id); m.classList.add('hidden'); m.classList.remove('flex'); }
+
+let toastTimer;
+function notify(message, title = 'Success', icon = 'fa-check') {
+  $('toastTitle').textContent = title;
+  $('toastMsg').textContent = message;
+  $('toastIcon').innerHTML = `<i class="fa-solid ${icon}"></i>`;
+  const t = $('toast');
+  t.classList.remove('translate-y-24', 'opacity-0');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.add('translate-y-24', 'opacity-0'), 3500);
+}
+
+function syncRangeInputs() {
+  const t = todayISO();
+  $('sIn').min = t;
+  $('sIn').value = searchRange.from;
+  $('sOut').min = addDays(t, 1);
+  $('sOut').value = searchRange.to;
+}
+
+/* =====================================================================
+   INIT
+   ===================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  // Support topic dropdown
+  $('tkTopic').innerHTML = SUPPORT_TOPICS.map(t => `<option>${esc(t)}</option>`).join('');
+
+  renderServices();
+  renderFAQ();
+  syncRangeInputs();
+  setAdminSection('board');
+  renderAll();
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal:not(.hidden)').forEach(m => closeModal(m.id));
+      toggleChat(false);
+    }
+  });
+});
+</script>
+</body>
+</html>  
